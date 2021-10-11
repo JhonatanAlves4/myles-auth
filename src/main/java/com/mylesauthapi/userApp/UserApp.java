@@ -1,5 +1,6 @@
 package com.mylesauthapi.userApp;
 
+import com.mylesauthapi.registration.token.ConfirmationToken;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class UserApp implements UserDetails {
     private UserAppRole userAppRole;
     private Boolean locked = false;
     private Boolean enabled = false;
+    private String token;
 
     public UserApp(String firstName, String lastName, String email, String password, UserAppRole userAppRole) {
         this.firstName = firstName;
@@ -40,6 +42,8 @@ public class UserApp implements UserDetails {
         this.password = password;
         this.userAppRole = userAppRole;
     }
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -63,6 +67,14 @@ public class UserApp implements UserDetails {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 
     public boolean isAccountNonExpired() {
