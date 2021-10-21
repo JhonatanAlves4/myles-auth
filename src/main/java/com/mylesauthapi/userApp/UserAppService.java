@@ -55,6 +55,8 @@ public class UserAppService implements UserDetailsService {
         userApp.setToken(token);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
 
+        System.out.println("Teste só p ver AaaaaaaaaaaaaaaaaAA");
+
         return token;
     }
 
